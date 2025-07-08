@@ -26,10 +26,6 @@ Install-Module -Name Az.Purview      -Force -Scope CurrentUser
 Import-Module  -Name Az.Purview
 
 # —— 以下为原有自动化逻辑 —— 
-param(
-  [string]$accountName,
-  # … 其他参数 …
-)
 # Add-AzPurviewAccountRootCollectionAdmin …
 # 其余调用 REST API 或 cmdlet …
 
