@@ -16,14 +16,11 @@ param(
 )
 
 # —— 卸载旧模块 —— 
-if (Get-Module -Name Az.Accounts) { Remove-Module Az.Accounts -Force -ErrorAction SilentlyContinue }
-if (Get-Module -Name Az.Purview)  { Remove-Module Az.Purview  -Force -ErrorAction SilentlyContinue }
-
-# —— 安装并加载指定版本 —— 
-Install-Module -Name Az.Accounts -RequiredVersion 5.1.1 -Force -Scope CurrentUser
-Import-Module  -Name Az.Accounts -RequiredVersion 5.1.1
-Install-Module -Name Az.Purview      -Force -Scope CurrentUser
-Import-Module  -Name Az.Purview
+if (Get-Module -Name Az.Accounts) { Remove-Module Az.Accounts -Force }
+Install-Module Az.Accounts -RequiredVersion 5.1.1 -Force
+Import-Module Az.Accounts -RequiredVersion 5.1.1
+Install-Module Az.Purview -Force
+Import-Module Az.Purview
 
 # —— 以下为原有自动化逻辑 —— 
 # Add-AzPurviewAccountRootCollectionAdmin …
