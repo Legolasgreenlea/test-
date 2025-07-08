@@ -16,11 +16,13 @@ param(
 )
 
 # —— 卸载旧模块 —— 
-if (Get-Module -Name Az.Accounts) { Remove-Module Az.Accounts -Force }
-Install-Module Az.Accounts -RequiredVersion 5.1.1 -Force
-Import-Module Az.Accounts -RequiredVersion 5.1.1
-Install-Module Az.Purview -Force
-Import-Module Az.Purview
+# 确保加载正确版本的 Az.Accounts
+Install-Module -Name Az.Accounts -RequiredVersion 5.1.1 -Force -AllowClobber
+Import-Module Az.Accounts -RequiredVersion 5.1.1 -Force
+
+# 确保 Az.Purview 模块正确安装
+Install-Module -Name Az.Purview -RequiredVersion 0.3.0 -Force -AllowClobber
+Import-Module Az.Purview -RequiredVersion 0.3.0 -Force
 
 # —— 以下为原有自动化逻辑 —— 
 # Add-AzPurviewAccountRootCollectionAdmin …
